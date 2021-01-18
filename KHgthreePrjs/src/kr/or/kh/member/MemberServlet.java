@@ -1,0 +1,184 @@
+package kr.or.kh.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("*.mb")
+public class MemberServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private MemberDTO memberDTO;
+	private MemberDAO memberDAO;
+	private int cnt;
+	private ArrayList<MemberDTO> memberList;
+		
+	public MemberServlet() {
+		memberDTO = new MemberDTO();
+		memberDAO = new MemberDAO();
+		
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String requestURI = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String command = requestURI.substring(contextPath.length());
+		HttpSession session=request.getSession();
+		
+		if(command.equals("/memberRegister.mb")) {
+			memberDTO.setId(request.getParameter("id"));
+			memberDTO.setPw(request.getParameter("pw"));
+			memberDTO.setName(request.getParameter("name"));
+			memberDTO.setAddr(request.getParameter("addr"));
+			memberDTO.setTel(request.getParameter("tel"));	
+			memberDTO.setStype(Integer.parseInt(request.getParameter("stype")));
+			try {
+				cnt=memberDAO.memberRegister(memberDTO);
+				out.print(cnt+"건 회원이 등록되었습니다.");
+				response.sendRedirect("memberList.mb");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/memberList.mb")) {
+			try {
+				memberList = memberDAO.memberList();
+				RequestDispatcher dis = request.getRequestDispatcher("member/memberList.jsp");
+				request.setAttribute("memberList", memberList);
+				dis.forward(request, response);	
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/memberLogin.mb")) {//로그인
+			String id=request.getParameter("id");
+			String pw=request.getParameter("pw");
+			
+			try {
+				memberDTO=memberDAO.memberLogin(id, pw);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+				if(!id.equals(memberDTO.getId())){
+					out.print("<script>alert('아이디가 틀렸습니다!'); history.go(-1);</script>");
+				}else if(!pw.equals(memberDTO.getPw())){
+					out.print("패스워드가 틀렸습니다!");
+				}else{
+					out.print(id+"님 환영합니다.로그인되었습니다!");
+					session = request.getSession();
+					session.setAttribute("id", id);
+					session.setAttribute("pw", pw);
+				}
+				response.sendRedirect("top.jsp");
+		}//로그인
+		else if(command.equals("/memberLogout.mb")) {//로그아웃
+			session.invalidate();
+			response.sendRedirect("index.jsp");
+		}//로그아웃
+		else if(command.equals("/memberDelete.mb")) {//회원탈퇴	
+			String pw = request.getParameter("pw");//사용자가 입력한 삭제하기위한 패스워드
+			if(pw.equals(session.getAttribute("pw"))) {
+				String deleteId = (String)session.getAttribute("id");
+				String deletePw = (String)session.getAttribute("pw");
+				try {
+					cnt = memberDAO.memberDelete(deleteId,deletePw);
+					out.print("<script>alert('탈퇴되었습니다.'); location.href='memberLogout.mb'</script>");
+					//response.sendRedirect("memberLogout.mb");					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}				
+			}else {
+				out.print("<script>alert('패스워드가 틀렸습니다.');</script>");
+			}
+			
+		}//회원탈퇴
+		else if(command.equals("/idcheckConfirm.mb")) {//아이디검색
+			String telSearch = request.getParameter("tel");
+			String id=null;
+			try {
+				id=memberDAO.memberIdcheck(telSearch);
+				out.print(id+" 찾는 아이디입니다.<br>");
+				out.print("<a href=index.jsp>메인으로</a>");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//아이디검색
+		else if(command.equals("/passcheckConfirm.mb")) {//패스워드검색
+			String id = request.getParameter("id");
+			try {
+				String pw = memberDAO.memberPwcheck(id);
+				out.print(pw+" 찾는 패스워드입니다.<br>");
+				out.print("<a href=index.jsp>메인으로</a>");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//패스워드검색
+		else if(command.equals("/memberUpdateConfirm.mb")) {
+			String id = request.getParameter("id");
+			try {
+				memberDTO = memberDAO.memberUpdateConfirm(id);
+				RequestDispatcher dis = request.getRequestDispatcher("member/memberUpdateConfirm.jsp");
+				request.setAttribute("memberDTO", memberDTO);
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/memberUpdateFinal.mb")) {//최종수정
+			memberDTO.setId(request.getParameter("id"));
+			memberDTO.setPw(request.getParameter("pw"));
+			memberDTO.setName(request.getParameter("name"));
+			memberDTO.setAddr(request.getParameter("addr"));
+			memberDTO.setTel(request.getParameter("tel"));	
+			memberDTO.setStype(Integer.parseInt(request.getParameter("stype")));
+			String idSearch = request.getParameter("idSearch");
+			try {
+				cnt=memberDAO.memberUpdateFinal(memberDTO, idSearch);
+				session.setAttribute("id", memberDTO.getId());
+				response.sendRedirect("memberList.mb");			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
+		}//최종수정
+		else if(command.equals("/idcheck.mb")) {
+			String idSearch = request.getParameter("id");
+			try {
+				ResultSet rs = memberDAO.memberIdCheckall(idSearch);
+				while(rs.next()) {
+					memberDTO.setId(rs.getString("id"));
+				}
+				if(idSearch.equals(memberDTO.getId())) {
+					out.print("이미 있는 아이디입니다.<br>");
+					out.print("<input type='button' value='종료' onClick='self.close()'>");
+					
+				}else {
+					out.print("사용가능한 아이디입니다.");
+					out.print("<input type='button' value='종료' onClick='self.close()'>");
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
