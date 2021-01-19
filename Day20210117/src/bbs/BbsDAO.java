@@ -17,7 +17,7 @@ public class BbsDAO {
 	
 	public BbsDAO() {
 		try {
-			String dbURL="jdbc:mysql://khgthree.cafe24.com:3306/khgthree?characterEncoding=utf8";
+			String dbURL="jdbc:mysql://127.0.0.1:3306/khgthree?characterEncoding=utf8";
 	        String dbID ="khgthree";
 	        String dbPassword ="wjdqhrydbrdnjs3";
 			Class.forName("com.mysql.jdbc.Driver");

@@ -80,6 +80,10 @@ public class BbsServlet extends HttpServlet {
 			if (session.getAttribute("ID") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 
 				userID = (String) session.getAttribute("ID");//유저아이디에 해당 세션값을 넣어준다.
 			}
+			int boardID = 1;
+			if (request.getParameter("boardID") != null){
+				boardID = Integer.parseInt(request.getParameter("boardID"));
+			}
 			
 			if (userID == null) {
 				
@@ -123,7 +127,7 @@ public class BbsServlet extends HttpServlet {
 						script.println("</script>");
 					} else {
 						script.println("<script>");
-						script.println("location.href= \'bbs.jsp'");
+						script.println("location.href='bbs.jsp?boardID="+boardID+"'");
 						script.println("</script>");
 					}
 				}
