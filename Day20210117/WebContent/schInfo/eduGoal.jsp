@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<style>
-   	.wrap {width: 900px; margin: 0 auto;}
-    section {float: left; width: 80%; height: 700px; background: white;}
-    </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<style>
+	.wrap {width: 60%; margin: 0 auto;}
+	section {float: left; width: 80%; background: white;}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 </head>
 <body>
 <div class="wrap">
@@ -22,7 +22,7 @@
         <img src ="../img/main2.png" style="height:100%; width: 100%;">
     </div>
     </section>
-    <jsp:include page="../bottom.jsp" flush="false"/>
     </div>
+    <jsp:include page="../bottom.jsp" flush="false"/>
 </body>
 </html>

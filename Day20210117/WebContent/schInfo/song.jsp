@@ -4,9 +4,9 @@
 <html lang="en">
 <head>
 <style>
-   .wrap {width: 900px; margin: 0 auto;}
-    section {float: left; width: 80%; height: 700px; background: white;}
-    </style>
+	.wrap {width: 60%; margin: 0 auto;}
+	section {float: left; width: 80%; background: white;}
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
