@@ -20,9 +20,11 @@
 </head>
 <body>
 	<%
-		String userID = null;
+		String userID = "";
+		String name = "";
 		if(session.getAttribute("ID") != null){
 			userID = (String) session.getAttribute("ID");
+			name = (String) session.getAttribute("NAME");
 		}
 	
 		int bbsID = 0;
@@ -40,6 +42,8 @@
 	 		script.println("location href = 'login.jsp'");
 	 		script.println("</script>");
 		}
+		String boardID = "";
+		boardID = request.getParameter("boardID");
 		Bbs bbs = new BbsDAO().getBbs(bbsID);
 		BbsDAO bdao = new BbsDAO();
 		bdao.readcountUpdate(bbsID);
@@ -93,7 +97,7 @@
             		data-toggle="dropdown" role="button" aria-haspopup="true" 
             		aria-expanded="false">회원관리<span class="caret"></span></a>
         		<ul class="dropdown-menu">
-              		<li><a href="index.jsp">로그아웃</a></li>
+              		<li><a href="logout.jsp">로그아웃</a></li>
             	</ul>    
          		</li>
        		</ul>
@@ -130,12 +134,12 @@
 					</tr>
 					<tr>
 					
-					<td colspan="6" align="center">	<a href="bbs.jsp" class="btn-primary" >목록</a>
+					<td colspan="6" align="center">	<a href="bbs.jsp?boardID=<%=boardID %>" class="btn-primary" >목록</a>
 					<%
-						if(userID != null && userID.equals(bbs.getUserID())){
+						if(userID != null && userID.equals(bbs.getUserID()) || userID.equals("system")){
 					%>
 							<a href = "update.jsp?bbsID=<%= bbsID %>" class="btn-primary">수정</a>
-							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href = "deleteAction.bo?bbsID=<%= bbsID %>&file_id=<%=bbs.getFile_id() %>" class="btn-primary">삭제</a>
+							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href = "deleteAction.bo?bbsID=<%= bbsID %>&file_id=<%=bbs.getFile_id() %>&boardID=<%=boardID %>" class="btn-primary">삭제</a>
 					</td>
 					
 					</tr>
@@ -166,7 +170,7 @@
 										<td align="left"><%= list.get(i).getAuthor() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= list.get(i).getCommentDate().substring(0,11) + list.get(i).getCommentDate().substring(11,13) + "시" + list.get(i).getCommentDate().substring(14,16) + "분" %></td>		
 										<td colspan="2"></td>
 										<td align="right"><%
-													if(list.get(i).getUserID() != null && list.get(i).getUserID().equals(userID)){
+													if((list.get(i).getUserID() != null && list.get(i).getUserID().equals(userID)) || userID.equals("system")){
 												%>
 														
 													
@@ -194,12 +198,13 @@
 				</table>
 			</div>
 		</div>
+					
 		<div class="container">
 			<div class="form-group">
 			<form method="post"action="commentAction.co?bbsID=<%= bbsID %>">
 					<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 						<tr>
-							<td style="border-bottom:none;" valign="middle"><br><br><%=(String)session.getAttribute("NAME") %></td>
+							<td style="border-bottom:none;" valign="middle"><br><br><%=name %></td>
 							<td><input type="text" style="height:100px;" class="form-control" placeholder="상대방을 존중하는 댓글을 남깁시다." name = "commentText"></td>
 							<td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
 						</tr>

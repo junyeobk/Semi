@@ -116,7 +116,7 @@
             		aria-expanded="false">회원관리<span class="caret"></span></a>
         		<ul class="dropdown-menu">
 					<li><a href="mypage.jsp">마이페이지</a></li>
-              		<li><a href="index.jsp">로그아웃</a></li>
+              		<li><a href="logout.jsp">로그아웃</a></li>
             	</ul>    
          		</li>
        		</ul>
@@ -240,7 +240,7 @@
 					<tbody>
 						<%
 							BbsDAO bbsDAO = new BbsDAO();
-							bbsDAO.setting(bbsDAO.getAllCount());
+// 							bbsDAO.setting(bbsDAO.getAllCount());
 							ArrayList<Bbs> list = bbsDAO.getList(pageNumber, boardID);
 							for(int i=0; i<list.size(); i++){	
 						%>

@@ -135,7 +135,7 @@
 					<tr>
 						<%
 							CommentDAO commentDAO = new CommentDAO();
-							commentDAO.setting(commentDAO.getAllCount());
+// 							commentDAO.setting(commentDAO.getAllCount());
 							ArrayList<Comment> list = commentDAO.getList(bbsID);
 							for(int i=0; i<list.size(); i++){
 								if(commentID==list.get(i).getCommentID())

@@ -40,6 +40,7 @@ public class BbsServlet extends HttpServlet {
 	         String userID = null;
 	         String file_id = request.getParameter("file_id");
 	         String file_name = request.getParameter("file_name");
+	         String boardID = request.getParameter("boardID");
 	          if(session.getAttribute("ID") != null){
 	             userID = (String) session.getAttribute("ID");
 	          } //뒤로가기 방지용(세션 값 다시 저장하기)
@@ -66,7 +67,7 @@ public class BbsServlet extends HttpServlet {
 	                }
 	                else{
 	                   script.println("<script>");
-	                   script.println("location.href= \'bbs.jsp'");
+	                   script.println("location.href='bbs.jsp?boardID="+boardID+"&pageNumber=1'");
 	                   script.println("</script>");
 	                }
 	             }
@@ -101,7 +102,7 @@ public class BbsServlet extends HttpServlet {
 			}
 			Bbs bbs = new BbsDAO().getBbs(bbsID);
 			
-			if (!userID.equals(bbs.getUserID())) {
+			if (!userID.equals(bbs.getUserID()) && !userID.equals("system")) {
 				script.println("<script>");
 				script.println("alert('권한이 없습니다.')");
 				script.println("location.href = 'bbs.jsp'");
@@ -154,12 +155,12 @@ public class BbsServlet extends HttpServlet {
 				script.println("location.href = 'bbs.jsp'");
 				script.println("</script>");
 			}
-			int boardID = 0;
+			int boardID = 1;
 			if (request.getParameter("boardID") != null){
 				boardID = Integer.parseInt(request.getParameter("boardID"));
 			}
 			Bbs bbs = new BbsDAO().getBbs(bbsID);
-			if (!userID.equals(bbs.getUserID())) {
+			if (!userID.equals(bbs.getUserID()) && !userID.equals("system")) {
 
 				script.println("<script>");
 				script.println("alert('권한이 없습니다.')");
@@ -185,7 +186,7 @@ public class BbsServlet extends HttpServlet {
 				} else {
 
 					script.println("<script>");
-					script.println("location.href= \'bbs.jsp?boardID="+boardID+"\'");
+					script.println("location.href='bbs.jsp?boardID="+boardID+"'");
 					script.println("</script>");
 				}
 			}

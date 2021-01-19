@@ -46,7 +46,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	 		
 	 		script.println("<script>");
 			script.println("alert('로그인을 해주세요.')");
-	 		script.println("location.href = 'login.jsp'");
+	 		script.println("location.href = 'LoginForm.jsp'");
 	 		script.println("</script>");
 	 	} 
 	 	else{
@@ -92,7 +92,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		if (userID == null) {
 			script.println("<script>");
 			script.println("alert('로그인을 하세요.')");
-			script.println("location.href = 'login.jsp'");
+			script.println("location.href = 'LoginForm.jsp'");
 			script.println("</script>");
 		} 
 		int bbsID = 0;
@@ -111,7 +111,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			script.println("</script>");
 		}
 		Comment comment = new CommentDAO().getComment(commentID);
-		if (!userID.equals(comment.getUserID())) {
+		if (!userID.equals(comment.getUserID()) && !userID.equals("system")) {
 			script.println("<script>");
 			script.println("alert('권한이 없습니다.')");
 			script.println("history.back()");
@@ -150,7 +150,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		if (userID == null) {
 			script.println("<script>");
 			script.println("alert('로그인을 하세요.')");
-			script.println("location.href = 'login.jsp'");
+			script.println("location.href = 'LoginForm.jsp'");
 			script.println("</script>");
 		} 
 		//글이 유효한지 판별
@@ -167,7 +167,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		}
 		Comment comment = new CommentDAO().getComment(commentID);
 
-		if (!userID.equals(comment.getUserID())) {
+		if (!userID.equals(comment.getUserID()) && !userID.equals("system")) {
 			script.println("<script>");
 			script.println("alert('권한이 없습니다.')");
 			script.println("location.href = 'bbs.jsp'");

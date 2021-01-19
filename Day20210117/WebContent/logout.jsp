@@ -13,7 +13,7 @@
 		session.invalidate();	 	
 	 %>
 	 <script>
-	 	location.href = 'loginForm.jsp';
+	 	location.href = 'LoginForm.jsp';
 	 </script>
 </body>
 </html>
