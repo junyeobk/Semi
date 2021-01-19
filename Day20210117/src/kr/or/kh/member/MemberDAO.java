@@ -30,7 +30,9 @@ public class MemberDAO {
 		}
 	}
 	public Connection getConnection() throws SQLException {
-		conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/khgthree", "khgthree", "wjdqhrydbrdnjs3");
+		//conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/khgthree", "khgthree", "wjdqhrydbrdnjs3");
+		conn = DriverManager.getConnection("jdbc:mysql://khgthree.cafe24.com:3306/khgthree", "khgthree","wjdqhrydbrdnjs3");//로컬용
+
 		return conn;
 	}
 	public int memberRegister(MemberDTO memberDTO) throws SQLException {

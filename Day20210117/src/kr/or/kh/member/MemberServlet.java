@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -137,7 +136,12 @@ public class MemberServlet extends HttpServlet {
 			try {
 				cnt=memberDAO.memberUpdateFinal(memberDTO, idSearch);
 				session.setAttribute("id", memberDTO.getId());
-				response.sendRedirect("memberList.mb");			
+				if(memberDTO.getStype()=="0") {
+					response.sendRedirect("memberList.mb");	
+				}
+				else {
+					response.sendRedirect("index.jsp");	
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}		
