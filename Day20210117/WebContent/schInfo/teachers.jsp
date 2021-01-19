@@ -14,8 +14,10 @@
         }
 
         #gallery_layout {
-            width: 960px;
-            margin: 10% auto;
+        	position:absolute;
+            margin: 2% auto;
+            overflow: hidden;
+            width : 100%;
         }
 
         #gallery_layout:after {
@@ -46,7 +48,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-        /*     transform: translate(-50%, -50%); */
+            transform: translate(-50%, -50%); 
         }
         
         .content h1 {
@@ -106,7 +108,7 @@
             transition: all 0.5s ease-in-out;
         }
         
-        @media all and (min-width: 960px) {
+         @media all and (min-width: 960px) {
             #gallery_layout {
                 position: absolute;
                 width: 60%;
@@ -114,7 +116,7 @@
             .gallery_content {
             width: 50%;
         }
-        } 
+        }  
 
         @media all and (max-width: 959px) {
         #gallery_layout {
@@ -147,10 +149,10 @@
     <jsp:include page="../menu_top.jsp" flush="false"/>
     <jsp:include page="../menu_left.jsp" flush="false"/>
 	<section>
-    <div style="width:80%; margin-left: 10%; margin-top: 5%;">
+    <div style="width:50%; padding:10%; padding-right: 20px;">
     <h1 style="color:#424242">교직원소개</h1>
     <hr>
-  <div id="gallery_layout">
+  	<div id="gallery_layout">
         <div class="gallery_content">
             <img src="../img/teacher1.png" alt="teacher1">
             <div class="content">
@@ -159,7 +161,7 @@
             </div>
             <div class="overlay darkBlue"></div>
         </div>
-        <div class="gallery_content top">
+        <div class="gallery_content">
             <img src="../img/teacher2.png" alt="teacher2">
             <div class="content">
                 <h1>수학</h1>

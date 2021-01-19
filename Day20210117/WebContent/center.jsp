@@ -127,9 +127,14 @@
 						<!-- 오시는길 -->
 						<div class="notice1">
 							<h1>오시는길</h1>
-							<ul>
 							
-							</ul>
+							<div style=" width: 80%; margin: 0 auto;">
+						<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.3783800920005!2d127.0307203155943!3d37.49899297981058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ec255555555%3A0x3565475c3365c5bb!2zS0jsoJXrs7TqtZDsnKHsm5A!5e0!3m2!1sko!2skr!4v1610883903396!5m2!1sko!2skr"
+						frameborder="0" style="border: 0;" width="100%" height="240px"
+						allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+						</div>
+							
 						</div>
 						<!-- //오시는길 -->
 					</article>
@@ -137,27 +142,27 @@
 			</section>
 			<section id="quick">
 				<div class="quick-box">
-					<a href="#"><img src="img/pallete.png" title="방과후"
+					<a href="bbs.jsp?boardID=1&pageNumber=1"><img src="img/pallete.png" title="방과후"
 						class="quick-icon" /><br>방과후교실</a>
 				</div>
 				<div class="quick-box">
-					<a href="#"><img src="img/board.png" title="시험"
+					<a href="bbs.jsp?boardID=2&pageNumber=1"><img src="img/board.png" title="시험"
 						class="quick-icon" /><br>시험자료</a>
 				</div>
 				<div class="quick-box">
-					<a href="#"><img src="img/plane.png" title="민원"
+					<a href="bbs.jsp?boardID=3&pageNumber=1"><img src="img/plane.png" title="민원"
 						class="quick-icon" /><br>민원신청</a>
 				</div>
 				<div class="quick-box">
-					<a href="#"><img src="img/note.png" title="학부모"
+					<a href="bbs.jsp?boardID=4&pageNumber=1"><img src="img/note.png" title="학부모"
 						class="quick-icon" /><br>학부모회</a>
 				</div>
 				<div class="quick-box">
-					<a href="#"><img src="img/graduation.png" title="연구"
+					<a href="bbs.jsp?boardID=5&pageNumber=1"><img src="img/graduation.png" title="연구"
 						class="quick-icon" /><br>연구자료</a>
 				</div>
 				<div class="quick-box">
-					<a href="#"><img src="img/book.png" title="업무"
+					<a href="bbs.jsp?boardID=6&pageNumber=1"><img src="img/book.png" title="업무"
 						class="quick-icon" /><br>업무자료실</a>
 				</div>
 			</section>
