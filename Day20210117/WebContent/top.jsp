@@ -16,10 +16,11 @@
 				<div class="header_menu">
 					<img src="img/logo_black.png" title="logo" class="logo-icon"/>
 					<a href="index.jsp">홈</a> 
-					<%if(id!=null){
-                        	out.print("<a href='memberLogout.mb'>로그아웃</a>");
-                         	out.print("<a href='mypage.jsp'>마이페이지</a>");
-                         	out.print(name+"님 환영합니다.");
+					<% MemberDTO memberDTO = new MemberDTO();
+					if(id!=null){
+                        	out.print("<a href='memberLogout.mb'>로그아웃</a>");%>
+                         	<a href='checkInfo.mb?MBNO=<%=memberDTO.getMbno()%>'>마이페이지</a>
+                         	<%out.print(name+"님 환영합니다.");
 						if(id.equals("system")){
                          	out.print("<a href='memberList.mb'>회원관리</a>");
 						}
