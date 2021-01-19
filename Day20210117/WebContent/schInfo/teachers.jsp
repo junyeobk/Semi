@@ -111,27 +111,25 @@
          @media all and (min-width: 960px) {
             #gallery_layout {
                 position: absolute;
-                width: 60%;
+                width: 40%;
             }  
             .gallery_content {
             width: 50%;
         }
         }  
 
-        @media all and (max-width: 959px) {
+         
+        @media all and (max-width: 800px) {
+        .wrap {width:100%; height :150%;}
+        #footer{margin-top: 2200px}
         #gallery_layout {
-            width: 100%;
+            width: 70%;
+            margin: 0% auto;
+            
         }
         .gallery_content {
-            width: 50%;
-        }
-        }
-        @media all and (max-width: 499px) {
-        #gallery_layout {
-            width: 100%;
-        }
-        .gallery_content {
-            width: 50%;
+            width: 90%;
+             margin: 0% auto;
         }
         }
         }
