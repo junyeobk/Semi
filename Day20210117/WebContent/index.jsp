@@ -5,7 +5,7 @@
 <html lang="ko">
 <head><!---->
     <meta charset="UTF-8">
-    <title>layout6</title>
+    <title>삼부초등학교에 오신것을 환영합니다.</title>
         
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/font-awesome.css">

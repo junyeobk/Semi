@@ -18,8 +18,11 @@
 					<a href="index.jsp">홈</a> 
 					<%if(id!=null){
                         	out.print("<a href='memberLogout.mb'>로그아웃</a>");
-                         	out.print("<a href='memberList.mb'>회원목록</a>");
                          	out.print("<a href='mypage.jsp'>마이페이지</a>");
+                         	out.print(name+"님 환영합니다.");
+						if(id.equals("system")){
+                         	out.print("<a href='memberList.mb'>회원관리</a>");
+						}
                         } else {
                         	out.print("<a href='LoginForm.jsp'>로그인</a>");
                         	 out.print("<a href='memberForm.jsp'>회원가입</a>");

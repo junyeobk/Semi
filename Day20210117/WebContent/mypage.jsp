@@ -9,5 +9,6 @@
 <body>
 <h1>마이페이지</h1>
 <%=(String)session.getAttribute("ID") %>
+<h2>회원정보 수정</h2>
 </body>
 </html>

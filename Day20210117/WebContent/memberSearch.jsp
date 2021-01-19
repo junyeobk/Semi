@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="kr.or.kh.member.MemberDTO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -19,9 +20,6 @@
 <title>회원검색</title>
 </head>
 <body>
-	<%
-		MemberDTO memberDTO = (MemberDTO) request.getAttribute("memberDTO");
-	%>
 	<div class="container" style="padding-top: 30px;">
 	<div class="row">
    		<h1>회원검색<br></h1>
@@ -35,6 +33,13 @@
 				<th style="background-color: #eeeee; text-align: center;">핸드폰번호</th>
 				<th style="background-color: #eeeee; text-align: center;">직업</th>
 			</tr>
+			
+			<%
+				ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>) request.getAttribute("memberList");
+			for (int i = 0; i < memberList.size(); i++) {
+				MemberDTO memberDTO = memberList.get(i);
+			%>
+			
 			<tr>
 				<td><%=memberDTO.getMbno()%></td>
 				<td><%=memberDTO.getId()%></td>
@@ -44,6 +49,9 @@
 				<td><%=memberDTO.getTel()%></td>
 				<td><%=memberDTO.getStype()%></td>
 			</tr>
+			<%
+				}
+			%>
 		</table>
 		<a href="memberList.mb"><input type="button" value="회원목록" style="float: right;"></a>
 	</div>

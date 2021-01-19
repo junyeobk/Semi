@@ -62,7 +62,7 @@
 					<li class="active"><a href="bbs.jsp?boardID=6&pageNumber=1">업무자료실</a></li>
 					<li class="active"><a href="bbs.jsp?boardID=7&pageNumber=1">공지사항</a></li>
 					<li class="active"><a href="bbs.jsp?boardID=8&pageNumber=1">가정통신문</a></li>
-					<li class="active"><a href="bbs.jsp?boardID=9&pageNumber=1">이달의행사</a></li>
+					<li class="active"><a href="event.jsp">이달의행사</a></li>
 			</ul>
 			<%
 				if(userID == null){		//로그인이 되어있지 않은 경우

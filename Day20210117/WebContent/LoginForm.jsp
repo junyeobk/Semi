@@ -17,7 +17,7 @@
 		<div class="jumbotron" style="padding-top: 20px; margin-top: 150px;">
 	 	<form action="./memberLogin.mb" method="get">
     		<div class="logo1" style="padding: 20px 0; margin-bottom: 0px; text-align: center;">
-	    		<img src="./images/sambuLogo.png" width="160px" height="170px">
+	    		<a href="index.jsp"><img src="./images/sambuLogo.png" width="160px" height="170px"></a>
 	    	</div>
      		<div class="form-group">
 				<input type="text" class="form-control" name="ID" maxlength="20" autofocus="autofocus" required="required" placeholder="아이디입력">

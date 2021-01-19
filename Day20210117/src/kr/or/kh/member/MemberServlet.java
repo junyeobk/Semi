@@ -53,8 +53,9 @@ public class MemberServlet extends HttpServlet {
 			memberDTO.setStype(request.getParameter("STYPE"));
 			try {
 				cnt=memberDAO.memberRegister(memberDTO);
-				out.print(cnt+"건 회원이 등록되었습니다.");
-				response.sendRedirect("memberList.mb");
+				request.setAttribute("ID", memberDTO.getId());
+				request.setAttribute("NAME", memberDTO.getName());
+				response.sendRedirect("index.jsp");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -98,10 +99,15 @@ public class MemberServlet extends HttpServlet {
 		
 		else if(command.equals("/memberSearch.mb")) {
 			String nameSearch = request.getParameter("nameSearch");
+			String stype = request.getParameter("STYPE");
 			try {
-				memberDTO = memberDAO.memberSearch(nameSearch);
-				RequestDispatcher dis = request.getRequestDispatcher("memberSearch.jsp");
-				request.setAttribute("memberDTO", memberDTO);
+				if(stype.equals("all")) {
+					memberList = memberDAO.memberSearchAll(nameSearch);
+				} else {
+				memberList = memberDAO.memberSearchBystype(nameSearch,Integer.parseInt(stype));
+				}
+				RequestDispatcher dis = request.getRequestDispatcher("memberList.jsp");
+				request.setAttribute("memberList", memberList);
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -201,6 +207,22 @@ public class MemberServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		
+		else if(command.equals("/checkInfo.mb")) {
+			try {
+				String mbno = request.getParameter("MBNO");
+				memberDTO = memberDAO.memberUpdateConfirm(Integer.parseInt(mbno));
+				RequestDispatcher dis = request.getRequestDispatcher("updateInfo.jsp");
+				request.setAttribute("memberDTO", memberDTO);
+				dis.forward(request, response);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}
 	}
 }

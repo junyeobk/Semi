@@ -61,7 +61,7 @@
 					<ul>
 						<li><a href="bbs.jsp?boardID=7&pageNumber=1">공지사항</a></li>
 						<li><a href="bbs.jsp?boardID=8&pageNumber=1">가정통신문</a></li>
-						<li><a href="bbs.jsp?boardID=9&pageNumber=1">이달의행사</a></li>
+						<li class="active"><a href="event.jsp">이달의행사</a></li>
 					</ul>
 				</div>
 			</div>

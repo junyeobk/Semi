@@ -40,20 +40,31 @@
       request.setAttribute("boardID", boardID);
    
 
-      if((boardID == 3 || boardID == 4 )&& !memberdao.userinfo(userID).getStype().equals("2"))
-      {
-          script.println("<script>");
-             script.println("alert('학부모 회원만 접근이 가능합니다')");
-             script.println("history.back()");
-             script.println("</script>");
-      }
       
-      if((boardID ==5 || boardID ==6) && !memberdao.userinfo(userID).getStype().equals("3"))
+      if((boardID ==1 || boardID ==2 || boardID ==3 || boardID ==4 || boardID ==5 || boardID ==6) && userID == null)
       {
           script.println("<script>");
-             script.println("alert('선생님 회원만 접근이 가능합니다')");
-             script.println("history.back()");
+             script.println("alert('로그인해주세요')");
+             script.println("location.href='LoginForm.jsp'");
              script.println("</script>");
+      }else
+      {
+         if((boardID == 3 || boardID == 4 )&& !(memberdao.userinfo(userID).getStype().equals("2") || memberdao.userinfo(userID).getStype().equals("0")))
+         {
+             script.println("<script>");
+                script.println("alert('학부모 회원만 접근이 가능합니다')");
+                script.println("history.back()");
+                script.println("</script>");
+         }
+         
+         if((boardID ==5 || boardID ==6) && !(memberdao.userinfo(userID).getStype().equals("3") || memberdao.userinfo(userID).getStype().equals("0")))
+         {
+             script.println("<script>");
+                script.println("alert('선생님 회원만 접근이 가능합니다')");
+                script.println("history.back()");
+                script.println("</script>");
+         }
+         
       }
    %>
 	<nav class="navbar navbar-default">
@@ -79,7 +90,7 @@
 					<li class="active"><a href="bbs.jsp?boardID=6&pageNumber=1">업무자료실</a></li>
 					<li class="active"><a href="bbs.jsp?boardID=7&pageNumber=1">공지사항</a></li>
 					<li class="active"><a href="bbs.jsp?boardID=8&pageNumber=1">가정통신문</a></li>
-					<li class="active"><a href="bbs.jsp?boardID=9&pageNumber=1">이달의행사</a></li>
+					<li class="active"><a href="event.jsp">이달의행사</a></li>
 			</ul>
 			<%
 				if(userID == null){		//로그인이 되어있지 않은 경우
@@ -90,7 +101,7 @@
             		data-toggle="dropdown" role="button" aria-haspopup="true" 
             		aria-expanded="false">접속하기<span class="caret"></span></a>
         		<ul class="dropdown-menu">
-              		<li><a href="login.jsp">로그인</a></li>
+              		<li><a href="LoginForm.jsp">로그인</a></li>
               		<li><a href="join.jsp">회원가입</a></li>
             		</ul>    
          		</li>
@@ -280,9 +291,6 @@
 		</div>
 	</div>
 	
-	<script>
-
-</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script> 
 </body>

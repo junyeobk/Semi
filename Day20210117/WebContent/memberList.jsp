@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -20,10 +21,10 @@
      
       <div class="container" style="padding-top: 30px;">
    		<div class="row">
-   		<h1>회원목록<br></h1>
+   		<h1>회원목록</h1><br>
            <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 			<tr>
-				<th style="background-color: #eeeee; text-align: center;">번호</th>
+				<th style="background-color: #eeeee; text-align: center;">번호 </th>
 				<th style="background-color: #eeeee; text-align: center;">아이디</th>
 				<th style="background-color: #eeeee; text-align: center;">비밀번호</th>
 				<th style="background-color: #eeeee; text-align: center;">이름</th>
@@ -37,8 +38,8 @@
 					MemberDTO memberDTO = memberList.get(i);
 			%>
 			<tr>
-				<td><%=memberDTO.getMbno()%></td>
-				<td><%=memberDTO.getId()%></td>
+				<td id="firstrow"><%=memberDTO.getMbno()%></td>
+				<td><a href="checkInfo.mb?MBNO=<%=memberDTO.getMbno()%>"><%=memberDTO.getId()%></a></td>
 				<td><%=memberDTO.getPw()%></td>
 				<td><%=memberDTO.getName()%></td>
 				<td><%=memberDTO.getAddr()%></td>
@@ -50,9 +51,14 @@
 			%>
 		</table>
 		<form name='frm' method='GET' action='memberSearch.mb'>
+		<select name="STYPE">
+			<option value="all">전체</option>
+			<option value="1">학생</option>
+			<option value="2">학부모</option>
+			<option value="3">교사</option>
+		</select>
 			<input type='text' name='nameSearch' placeholder="이름입력">
 			<button type='submit'>검색</button>
-			<a href="memberUpdateConfirm.mb"><input type="button" value="회원수정" style="float: right;"></a>
 		</form>		
 	</div>
 	</div>

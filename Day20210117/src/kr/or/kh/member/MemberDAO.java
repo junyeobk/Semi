@@ -74,23 +74,49 @@ public class MemberDAO {
 		cnt = pstmt.executeUpdate();
 		return cnt;
 	}
-	public MemberDTO memberSearch(String nameSearch) throws SQLException{
+	public ArrayList<MemberDTO> memberSearchBystype(String nameSearch,int stype) throws SQLException{
 		conn = getConnection();
-		sql = "SELECT MBNO,NAME,ADDR,TEL,ID,PW,STYPE FROM SMEMBER where NAME=?";
+		sql = "SELECT MBNO,NAME,ADDR,TEL,ID,PW,STYPE FROM SMEMBER where NAME like ? AND STYPE=?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, nameSearch);
+		pstmt.setString(1, "%"+nameSearch+"%");
+		pstmt.setInt(2, stype);
 		rs = pstmt.executeQuery();
+		memberList = new ArrayList<MemberDTO>();
 		while(rs.next()) {
+			memberDTO = new MemberDTO();
 			memberDTO.setMbno(rs.getInt("MBNO"));
 			memberDTO.setId(rs.getString("ID"));
 			memberDTO.setPw(rs.getString("PW"));
 			memberDTO.setName(rs.getString("NAME"));
 			memberDTO.setAddr(rs.getString("ADDR"));
 			memberDTO.setTel(rs.getString("TEL"));
-			memberDTO.setStype(rs.getString("STYPE"));			
+			memberDTO.setStype(rs.getString("STYPE"));
+			memberList.add(memberDTO);
 		}
-		return memberDTO;				
-	}	
+		return memberList;				
+	}
+	
+	public ArrayList<MemberDTO> memberSearchAll(String nameSearch) throws SQLException{
+		conn = getConnection();
+		sql = "SELECT MBNO,NAME,ADDR,TEL,ID,PW,STYPE FROM SMEMBER where NAME like ? ";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, "%"+nameSearch+"%");
+		rs = pstmt.executeQuery();
+		memberList = new ArrayList<MemberDTO>();
+		while(rs.next()) {
+			memberDTO = new MemberDTO();
+			memberDTO.setMbno(rs.getInt("MBNO"));
+			memberDTO.setId(rs.getString("ID"));
+			memberDTO.setPw(rs.getString("PW"));
+			memberDTO.setName(rs.getString("NAME"));
+			memberDTO.setAddr(rs.getString("ADDR"));
+			memberDTO.setTel(rs.getString("TEL"));
+			memberDTO.setStype(rs.getString("STYPE"));
+			memberList.add(memberDTO);
+		}
+		return memberList;				
+	}
+	
 	public MemberDTO memberLogin(String id, String pw)throws SQLException {
 	conn=getConnection();
 	sql = "SELECT ID,PW,NAME from SMEMBER WHERE ID=?";
@@ -144,6 +170,22 @@ public class MemberDAO {
 		}
 		return memberDTO;
 	}
+	public MemberDTO memberUpdateConfirm(int mbno) throws SQLException {
+		conn = getConnection();
+		sql = "SELECT NAME,ADDR,TEL,ID,PW,STYPE FROM SMEMBER WHERE MBNO=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, mbno);
+		rs=pstmt.executeQuery();
+		while(rs.next()) {
+			memberDTO.setName(rs.getString("NAME"));
+			memberDTO.setAddr(rs.getString("ADDR"));
+			memberDTO.setTel(rs.getString("TEL"));			
+			memberDTO.setId(rs.getString("ID"));
+			memberDTO.setPw(rs.getString("PW"));
+			memberDTO.setStype(rs.getString("STYPE"));
+		}
+		return memberDTO;
+	}
 	public int memberUpdateFinal(MemberDTO memberDTO, String idSearch) throws SQLException {
 		conn = getConnection();
 		sql = "update SMEMBER set id=?,pw=?,name=?,addr=?,tel=?,stype=? where id=?";
@@ -192,4 +234,5 @@ public class MemberDAO {
 	      }
 	      return null;
 	   }
+
 }
