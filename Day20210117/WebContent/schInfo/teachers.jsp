@@ -108,7 +108,7 @@
             transition: all 0.5s ease-in-out;
         }
         
-         @media all and (min-width: 960px) {
+         @media (max-width : 1620px) {
             #gallery_layout {
                 position: absolute;
                 width: 40%;
@@ -117,9 +117,28 @@
             width: 50%;
         }
         }  
+        
+         @media (max-width : 1290px) {
+            #gallery_layout {
+                position: absolute;
+                width: 50%;
+            }  
+            .gallery_content {
+            width: 50%;
+        }
+        } 
+        @media (max-width : 950px) {
+            #gallery_layout {
+                position: absolute;
+                width: 60%;
+            }  
+            .gallery_content {
+            width: 50%;
+        }
+        } 
 
          
-        @media all and (max-width: 800px) {
+        @media (max-width: 730px) {
         .wrap {width:100%; height :150%;}
         #footer{margin-top: 2200px}
         #gallery_layout {
