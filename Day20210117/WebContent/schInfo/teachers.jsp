@@ -4,51 +4,42 @@
 <html lang="en">
 <head>
 <style type="text/css">
-
-   .wrap {width: 900px; margin: 0 auto;}
-    section {float: left; width: 80%; height: 1300px; background: white;}
-
+	.wrap {width: 60%; margin: 0 auto;}
+	section {float: left; width: 80%; background: white;}
       
         .gallery_content:hover .overlay.right {
             top: 0;
         }
-
         #gallery_layout {
-        	position:absolute;
+            width: 560px;
             margin: 2% auto;
-            overflow: hidden;
-            width : 100%;
         }
-
         #gallery_layout:after {
             content: "";
             display: block;
             clear: both;
         }
-
         .gallery_content {
             position: relative;
             float: left;
             width: 50%;
             overflow: hidden;
         }
-
         .gallery_content img {
             width: 100%;
-            height: 300px;
+            height: 240px;
             display: block;
             margin: 0 auto;
             transition: all 1s ease-in-out;
         }
-
         .content {
             z-index: 1;
             display: none;
             color: #fff;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); 
+            top: 45%;
+            left: 45%;
+        /*     transform: translate(-50%, -50%); */
         }
         
         .content h1 {
@@ -65,12 +56,10 @@
             display: block;
             transition: all 1s ease-in-out;
         }
-
         .gallery_content:hover img {
             transform: scale(1.2);
             transition: all 1s ease-in-out;
         }
-
         .overlay {
             display: none;
             width: 100%;
@@ -82,52 +71,18 @@
             bottom: 0;
             transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
         }
-
         /* overlay color */
-        .overlay.darkBlue {
-            background-color:rgba(31, 50, 99, 0.6);
-        }
-        .overlay.gold {
-            background-color:rgba(216, 177, 126, 0.5);
-        }  
-        .overlay.pink {
-            background-color:rgba(255, 113, 181, 0.7);
-        }  
+
         .overlay.black {
             background-color: rgba(0, 0, 0, 0.5);
-        }  
-        .overlay.yellow {
-            background-color: rgba(103, 58, 183, 0.5);
-        }
-        .overlay.red {
-            background-color: rgba(244, 67, 54, 0.5);
-        }      
-
+        } 
+      
         .gallery_content:hover .overlay {
             display: block;
             transition: all 0.5s ease-in-out;
         }
         
-         @media (max-width : 1620px) {
-            #gallery_layout {
-                position: absolute;
-                width: 40%;
-            }  
-            .gallery_content {
-            width: 50%;
-        }
-        }  
-        
-         @media (max-width : 1290px) {
-            #gallery_layout {
-                position: absolute;
-                width: 50%;
-            }  
-            .gallery_content {
-            width: 50%;
-        }
-        } 
-        @media (max-width : 950px) {
+        @media all and (min-width: 560px) {
             #gallery_layout {
                 position: absolute;
                 width: 60%;
@@ -136,55 +91,55 @@
             width: 50%;
         }
         } 
-
-         
-        @media (max-width: 730px) {
-        .wrap {width:100%; height :150%;}
-        #footer{margin-top: 2200px}
+        @media all and (max-width: 559px) {
         #gallery_layout {
-            width: 70%;
-            margin: 0% auto;
-            
+            width: 100%;
         }
         .gallery_content {
-            width: 90%;
-             margin: 0% auto;
+            width: 50%;
+        }
+        }
+        @media all and (max-width: 99px) {
+        #gallery_layout {
+            width: 100%;
+        }
+        .gallery_content {
+            width: 50%;
         }
         }
         }
-
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <head>
  <meta charset="UTF-8">
- <title>앨범만들기 - 표</title>
+ <title>교직원소개</title>
 </head>
 <body>
 <div class="wrap">
     <jsp:include page="../menu_top.jsp" flush="false"/>
     <jsp:include page="../menu_left.jsp" flush="false"/>
 	<section>
-    <div style="width:50%; padding:10%; padding-right: 20px;">
+    <div style="width:80%; margin-left: 10%; margin-top: 5%;">
     <h1 style="color:#424242">교직원소개</h1>
     <hr>
-  	<div id="gallery_layout">
+  <div id="gallery_layout" style="width: 518px;">
         <div class="gallery_content">
             <img src="../img/teacher1.png" alt="teacher1">
             <div class="content">
                 <h1>영어</h1>
                 <p>박신혜</p>
             </div>
-            <div class="overlay darkBlue"></div>
+            <div class="overlay black"></div>
         </div>
-        <div class="gallery_content">
+        <div class="gallery_content top">
             <img src="../img/teacher2.png" alt="teacher2">
             <div class="content">
                 <h1>수학</h1>
                 <p>이선균</p>
             </div>
-            <div class="overlay red"></div>
+            <div class="overlay black"></div>
         </div>
         <div class="gallery_content">
             <img src="../img/teacher3.png" alt="teacher3">
@@ -192,7 +147,7 @@
                 <h1>음악</h1>
                 <p>신세경</p>
             </div>
-            <div class="overlay pink"></div>
+            <div class="overlay black"></div>
         </div>
         <div class="gallery_content">
             <img src="../img/teacher4.png" alt="teacher4">
@@ -208,7 +163,7 @@
                 <h1>문학</h1>
                 <p>송혜교</p>
             </div>
-            <div class="overlay yellow"></div>
+            <div class="overlay black"></div>
         </div>
         <div class="gallery_content">
             <img src="../img/teacher6.png" alt="teacher6">
@@ -216,7 +171,7 @@
                 <h1>체육</h1>
                 <p>현빈</p>
             </div>
-            <div class="overlay gold"></div>
+            <div class="overlay black"></div>
         </div>
     </div>
     </div>

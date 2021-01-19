@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div id="wrap">
+    <div id="wrap" style="width: 60%; margin: 0 auto;">
     <jsp:include page="top.jsp"></jsp:include> 
     <jsp:include page="center.jsp"></jsp:include>  
     <jsp:include page="bottom.jsp"></jsp:include>
