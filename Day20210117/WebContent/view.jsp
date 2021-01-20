@@ -119,14 +119,11 @@
 						<td colspan="3" align="right"><%= bbs.getBbsDate().substring(0,11) + bbs.getBbsDate().substring(11,13) + "시" +  bbs.getBbsDate().substring(14,16) + "분"  %>&nbsp;&nbsp; 조회수 <%=bdao.readcount(bbsID) %></td>
 						
 					</tr>
-					<%if(bbs.getFile_id()!=null){
-                  %>
+					<%if(!bbs.getFile_id().equals("null")){%>
                   <tr>
                      <td colspan="6" align="right"><a href="uploadtest/download.jsp?file_id=<%=bbs.getFile_id()%>&file_name=<%=bbs.getFile_name()%>"><%=bbs.getFile_name()%></a></td>
                   </tr>
-                  <%
-               }
-               %>
+                  <%}%>
 					
 					<tr>
 						<td colspan="6"><br><br>
@@ -138,7 +135,7 @@
 					<%
 						if(userID != null && userID.equals(bbs.getUserID()) || userID.equals("system")){
 					%>
-							<a href = "update.jsp?bbsID=<%= bbsID %>" class="btn-primary">수정</a>
+							<a href = "update.jsp?boardID=<%=boardID%>&bbsID=<%= bbsID %>&file_id=<%=bbs.getFile_id()%>&file_name=<%=bbs.getFile_name()%>" class="btn-primary">수정</a>
 							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href = "deleteAction.bo?bbsID=<%= bbsID %>&file_id=<%=bbs.getFile_id() %>&boardID=<%=boardID %>" class="btn-primary">삭제</a>
 					</td>
 					

@@ -10,12 +10,15 @@
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-
+<script src="js/jquery-1.10.2.js"></script>
 <title>커뮤니티</title>
 </head>
 <body>
 	<%
 		String userID = null;
+		String file_id = request.getParameter("file_id");
+		String file_name = request.getParameter("file_name");
+		String boardID = request.getParameter("boardID");
 		if(session.getAttribute("ID") != null){
 			userID = (String) session.getAttribute("ID");
 		}
@@ -79,20 +82,31 @@
 	<!-- 게시판 --> 
 	<div class="container">
 		<div class="row">
-			<form method="post" action="updateAction.bo?bbsID=<%= bbsID %>">
-				<table class="table table-striped"
-					style="text-align: center; border: 1px solid #dddddd">
+			<form method="post" action="uploadtest/uploadUpdate.jsp" enctype="multipart/form-data">
+			<input type="hidden" name="bbsID" value="<%=bbsID %>">
+			<input type="hidden" name="boardID" value="<%=boardID %>">
+				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
 							<th colspan="2" style="background-color: #eeeeee; text-align: center;">글수정 </th>
 						</tr>
 					</thead>
-					
 					<tbody>
 						<tr>
 							<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50" value="<%= bbs.getBbsTitle() %>" ></td>
 						</tr>
+						<tr>
+						<%if(!file_id.equals("null")){%>
+							<td style="text-align: left">
+							<a href='uploadtest/download.jsp?file_id=<%=file_id%>&file_name=<%=file_name%>' id='filedelete'><%=file_name %></a>
 							
+							<a href="#" onclick="xbox()" id='xdelete'> X</a>
+							<input type="file" name="file_name" style="display:none;" id="fileup">
+							</td>
+						</tr>
+						<%} else{%>
+							<tr><td><input type="file" name="file_name"></td></tr>
+						<%} %>
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;" ><%= bbs.getBbsContent() %></textarea></td>
 						</tr>
@@ -102,7 +116,32 @@
 			</form>
 		</div>
 	</div>
-	
+	<script>
+	function Request(){
+	    var requestParam ="";	 
+		this.getParameter = function(param){
+	        var url = unescape(location.href); 
+	        var paramArr = (url.substring(url.indexOf("?")+1,url.length)).split("&"); 
+	        
+	        for(var i = 0 ; i < paramArr.length ; i++){
+	           var temp = paramArr[i].split("=");
+	        
+	           if(temp[0].toUpperCase() == param.toUpperCase()){
+	             requestParam = paramArr[i].split("=")[1]; 
+	             break;
+	           }
+	        }
+	        return requestParam;
+	    }
+	}
+	function xbox(){
+		var request = new Request();
+		var file_id = request.getParameter("file_id");
+		document.getElementById("filedelete").style.display="none";
+		document.getElementById("xdelete").style.display="none";
+		document.getElementById("fileup").style.display="";
+	}
+	</script>
 	<!-- 애니매이션 담당 JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<!-- 부트스트랩 JS  -->

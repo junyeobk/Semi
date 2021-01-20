@@ -205,6 +205,21 @@ public class BbsDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
+	public int update2(int bbsID, String bbsTitle, String bbsContent, String file_id, String file_name) {
+		String SQL = "UPDATE bbs SET bbsTitle = ?, bbsContent = ?, file_id = ?, file_name = ? WHERE bbsID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, bbsTitle);
+			pstmt.setString(2, bbsContent);
+			pstmt.setString(3, file_id);
+			pstmt.setString(4, file_name);
+			pstmt.setInt(5, bbsID);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
 	
 	public int delete(int bbsID) {
 		String SQL2 =  "SET foreign_key_checks = 0";

@@ -119,7 +119,14 @@ public class BbsServlet extends HttpServlet {
 					script.println("</script>");
 				} else {
 					BbsDAO bbsDAO = new BbsDAO();
-					int result = bbsDAO.update(bbsID, request.getParameter("bbsTitle"),request.getParameter("bbsContent"));
+					String file_id = request.getParameter("file_id");
+					String file_name = request.getParameter("file_name");
+					int result = 0;
+					if(file_id!=null||file_name!=null) {
+						result = bbsDAO.update2(bbsID, request.getParameter("bbsTitle"),request.getParameter("bbsContent"),file_id,file_name);
+					} else {
+						result = bbsDAO.update(bbsID, request.getParameter("bbsTitle"),request.getParameter("bbsContent"));
+					}
 					if (result == -1) {
 						script.println("<script>");
 						script.println("alert('글수정에 실패했습니다')");

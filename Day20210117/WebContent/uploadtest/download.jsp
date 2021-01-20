@@ -51,7 +51,8 @@
             } 
              
             response.setHeader ("Content-Length", ""+file.length() );
-       
+       		
+            out.clear();
             os = response.getOutputStream();
             byte b[] = new byte[(int)file.length()];
             int leng = 0;
