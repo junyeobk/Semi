@@ -13,6 +13,7 @@
 	String file_id = "";
 	String boardID = "";
 	String bbsID = "";
+	String file_curname ="";
 	
 	String uploadPath = request.getRealPath("upload"); // upload는 폴더명 / 폴더의 경로를 구해옴
 	//out.print(uploadPath);
@@ -38,6 +39,7 @@
 		bbsContent = multi.getParameter("bbsContent");
 		boardID = multi.getParameter("boardID");
 		bbsID = multi.getParameter("bbsID");
+		file_curname= multi.getParameter("file_curname");
 	} catch (Exception e) {
 		e.getStackTrace();
 	} // 업로드 종료
@@ -53,6 +55,7 @@
 		<input type="hidden" name="bbsContent" value="<%=bbsContent%>">
 		<input type="hidden" name="boardID" value="<%=boardID%>">
 		<input type="hidden" name="bbsID" value="<%=bbsID %>">
+		<input type="hidden" name="file_curname" value="<%=file_curname%>">
 	</form>
 
 <script type="text/javascript">

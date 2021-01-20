@@ -23,7 +23,7 @@
       <div class="notice_text"> 
       <ul>
    <%    for (int i = 0; i < list.size(); i++) {%>
-      <li><span class="text"><a target='_parent' href="view.jsp?boardID=7&bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getBbsTitle()%></a></span>
+      <li><span class="text"><a target='_parent' href="left.jsp?page=view&boardID=7&bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getBbsTitle()%></a></span>
       <span class="date"><%=list.get(i).getBbsDate().substring(0, 11)%></span></li>
       <%
          }

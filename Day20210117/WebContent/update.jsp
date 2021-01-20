@@ -99,9 +99,9 @@
 						<%if(!file_id.equals("null")){%>
 							<td style="text-align: left">
 							<a href='uploadtest/download.jsp?file_id=<%=file_id%>&file_name=<%=file_name%>' id='filedelete'><%=file_name %></a>
-							
 							<a href="#" onclick="xbox()" id='xdelete'> X</a>
 							<input type="file" name="file_name" style="display:none;" id="fileup">
+							<input type="hidden" name="file_curname" value="<%=file_id %>">
 							</td>
 						</tr>
 						<%} else{%>

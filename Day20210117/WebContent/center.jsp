@@ -37,30 +37,30 @@
 				<div class="last">
 					<h3>학생마당</h3>
 					<ul>
-						<li><a href="bbs.jsp?boardID=1&pageNumber=1">방과후교실</a></li>
-						<li><a href="bbs.jsp?boardID=2&pageNumber=1">시험자료</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=1&pageNumber=1">방과후교실</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=2&pageNumber=1">시험자료</a></li>
 					</ul>
 				</div>
 				<div class="last">
 					<h3>학부모마당</h3>
 					<ul>
-						<li><a href="bbs.jsp?boardID=3&pageNumber=1">민원신청</a></li>
-						<li><a href="bbs.jsp?boardID=4&pageNumber=1">학부모회</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=3&pageNumber=1">민원신청</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=4&pageNumber=1">학부모회</a></li>
 					</ul>
 				</div>
 				<div class="last">
 					<h3>선생님마당</h3>
 					<ul>
-						<li><a href="bbs.jsp?boardID=5&pageNumber=1">연구자료</a></li>
-						<li><a href="bbs.jsp?boardID=6&pageNumber=1">업무자료실</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=5&pageNumber=1">연구자료</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=6&pageNumber=1">업무자료실</a></li>
 					</ul>
 				</div>
 
 				<div class="last">
 					<h3>열림마당</h3>
 					<ul>
-						<li><a href="bbs.jsp?boardID=7&pageNumber=1">공지사항</a></li>
-						<li><a href="bbs.jsp?boardID=8&pageNumber=1">가정통신문</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=7&pageNumber=1">공지사항</a></li>
+						<li><a href="left.jsp?bbs.jsp&boardID=8&pageNumber=1">가정통신문</a></li>
 						<li class="active"><a href="event.jsp">이달의행사</a></li>
 					</ul>
 				</div>
@@ -142,27 +142,27 @@
 			</section>
 			<section id="quick">
 				<div class="quick-box">
-					<a href="bbs.jsp?boardID=1&pageNumber=1"><img src="img/pallete.png" title="방과후"
+					<a href="left.jsp?bbs.jsp&boardID=1&pageNumber=1"><img src="img/pallete.png" title="방과후"
 						class="quick-icon" /><br>방과후교실</a>
 				</div>
 				<div class="quick-box">
-					<a href="bbs.jsp?boardID=2&pageNumber=1"><img src="img/board.png" title="시험"
+					<a href="left.jsp?bbs.jsp&boardID=2&pageNumber=1"><img src="img/board.png" title="시험"
 						class="quick-icon" /><br>시험자료</a>
 				</div>
 				<div class="quick-box">
-					<a href="bbs.jsp?boardID=3&pageNumber=1"><img src="img/plane.png" title="민원"
+					<a href="left.jsp?bbs.jsp&boardID=3&pageNumber=1"><img src="img/plane.png" title="민원"
 						class="quick-icon" /><br>민원신청</a>
 				</div>
 				<div class="quick-box">
-					<a href="bbs.jsp?boardID=4&pageNumber=1"><img src="img/note.png" title="학부모"
+					<a href="left.jsp?bbs.jsp&boardID=4&pageNumber=1"><img src="img/note.png" title="학부모"
 						class="quick-icon" /><br>학부모회</a>
 				</div>
 				<div class="quick-box">
-					<a href="bbs.jsp?boardID=5&pageNumber=1"><img src="img/graduation.png" title="연구"
+					<a href="left.jsp?bbs.jsp&boardID=5&pageNumber=1"><img src="img/graduation.png" title="연구"
 						class="quick-icon" /><br>연구자료</a>
 				</div>
 				<div class="quick-box">
-					<a href="bbs.jsp?boardID=6&pageNumber=1"><img src="img/book.png" title="업무"
+					<a href="left.jsp?bbs.jsp&boardID=6&pageNumber=1"><img src="img/book.png" title="업무"
 						class="quick-icon" /><br>업무자료실</a>
 				</div>
 			</section>

@@ -10,10 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <link rel="stylesheet" href="css/Left-style.css">
 </head>
 <body>
+<script src="js/listscript.js"></script>
 <div class="wrap">
     <jsp:include page="../menu_top.jsp" flush="false"/>
+    <div class="gruop">
     <jsp:include page="../menu_left.jsp" flush="false"/>
 	<section>
     <div style="width:100%; margin-left: 5%; margin-top: 5%;">
@@ -21,8 +24,9 @@
     <hr>
         <img src ="../img/hi.png" style="height:100%; width: 100%;">
     </div>
-        </section>
-    <jsp:include page="../bottom.jsp" flush="false"/>
     </div>
+        </section> 
+    </div>
+   
 </body>
 </html>

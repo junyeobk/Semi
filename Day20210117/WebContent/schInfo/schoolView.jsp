@@ -17,6 +17,7 @@
 <body>
 <div class="wrap">
     <jsp:include page="../menu_top.jsp" flush="false"/>
+    <div class="gruop">
     <jsp:include page="../menu_left.jsp" flush="false"/>
 	<section>
     <div style="width:80%; margin-left: 10%; margin-top: 5%;">
@@ -35,7 +36,7 @@
         </div>
     </div>
             </section>
-    <jsp:include page="../bottom.jsp" flush="false"/>
+    </div>
     </div>
 </body>
 </html>

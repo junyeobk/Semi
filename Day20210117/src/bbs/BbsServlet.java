@@ -121,9 +121,15 @@ public class BbsServlet extends HttpServlet {
 					BbsDAO bbsDAO = new BbsDAO();
 					String file_id = request.getParameter("file_id");
 					String file_name = request.getParameter("file_name");
+					String file_curname = request.getParameter("file_curname");
 					int result = 0;
 					if(file_id!=null||file_name!=null) {
 						result = bbsDAO.update2(bbsID, request.getParameter("bbsTitle"),request.getParameter("bbsContent"),file_id,file_name);
+						try {
+							bbsDAO.fileDelete(request, file_curname);
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 					} else {
 						result = bbsDAO.update(bbsID, request.getParameter("bbsTitle"),request.getParameter("bbsContent"));
 					}
